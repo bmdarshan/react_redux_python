@@ -5,12 +5,12 @@ import AddPaycheck from "../components/addPaycheck.jsx";
 const mapDispatchToProps = dispatch => {
   return {
     addNewPaycheck: payCheck => {
-      //Dispatch not working
-      //dispatch(addPayCheck(payCheck));
+      // Dispatch not working
+      dispatch(addPayCheck(payCheck));
     }
   };
 };
 
-const AddPayCheckContainer = connect(mapDispatchToProps)(AddPaycheck);
+const AddPayCheckContainer = connect(null, mapDispatchToProps)(AddPaycheck);
 
 export default AddPayCheckContainer;

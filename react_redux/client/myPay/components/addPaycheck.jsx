@@ -12,18 +12,31 @@ import {
 export default class AddPayCheck extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      payCheckNumber: '',
+      payCheckDate: '',
+      payCheckAmount: ''
+    };
     this.addNewPaycheck = this.addNewPaycheck.bind(this);
-    this.state = {};
+    this.handleInputChange = this.handleInputChange.bind(this);
+  }
+
+  handleInputChange(event) {
+    const target = event.target;
+    const value = target.value;
+    const name = target.name;
+
+    this.setState({
+      [name]: value
+    });
   }
 
   addNewPaycheck() {
-    console.log(this.state);
     let newPayCheck = {
       payCheckNumber: this.state.payCheckNumber,
       payCheckDate: this.state.payCheckDate,
       payCheckAmount: this.state.payCheckAmount
     };
-    console.log(newPayCheck);
     this.props.addNewPaycheck(newPayCheck);
   }
 
@@ -34,23 +47,35 @@ export default class AddPayCheck extends React.Component {
           <Col xs={3} md={3}>
             <InputGroup>
               <ControlLabel>Check #</ControlLabel>
-              <FormControl type="text" value={this.state.payCheckNumber} />
+              <FormControl
+              type="text"
+              name="payCheckNumber"
+              value={this.state.payCheckNumber}
+              onChange={this.handleInputChange}/>
             </InputGroup>
           </Col>
           <Col xs={3} md={3}>
             <InputGroup>
               <ControlLabel>Check date</ControlLabel>
-              <FormControl type="text" value={this.state.payCheckDate} />
+              <FormControl
+              type="text"
+              name='payCheckDate'
+              value={this.state.payCheckDate}
+              onChange={this.handleInputChange}/>
             </InputGroup>
           </Col>
           <Col xs={3} md={3}>
             <InputGroup>
               <ControlLabel>Check Amount</ControlLabel>
-              <FormControl type="text" value={this.state.payCheckAmount} />
+              <FormControl
+              type="text"
+              name='payCheckAmount'
+              value={this.state.payCheckAmount}
+              onChange={this.handleInputChange}/>
             </InputGroup>
           </Col>
         </Row>
-        <Button bsStyle="primary" onClick={this.addNewPaycheck()}>
+        <Button bsStyle="primary" onClick={this.addNewPaycheck}>
           AddPayCheck
         </Button>
       </form>

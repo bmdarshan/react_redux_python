@@ -7,6 +7,12 @@ export default class PayCheckList extends React.Component {
     console.log(props);
   }
 
+  componentWillReceiveProps(nextProps){
+    console.log(nextProps)
+    console.log(this.props)
+  }
+
+
   render() {
     return (
       <div>
