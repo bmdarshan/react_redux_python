@@ -2,10 +2,9 @@ import { connect } from "react-redux";
 import { addPayCheck } from "../actions/actions.js";
 import AddPaycheck from "../components/addPaycheck.jsx";
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
   return {
-    addNewPaycheck: payCheck => {
-      // Dispatch not working
+    addNewPaycheck: (payCheck) => {
       dispatch(addPayCheck(payCheck));
     }
   };

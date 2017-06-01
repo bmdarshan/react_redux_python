@@ -10,6 +10,7 @@ import MyPay from "./myPay/components/myPay.jsx";
 
 let store = createStore(myPayCheckApp);
 
+console.log(store.getState())
 const Root = () => (
   <Provider store={store}>
     <BrowserRouter>

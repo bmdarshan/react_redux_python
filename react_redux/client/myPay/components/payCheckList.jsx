@@ -4,14 +4,8 @@ import PayCheck from "./payCheck.jsx";
 export default class PayCheckList extends React.Component {
   constructor(props) {
     super(props);
-    console.log(props);
+    console.log(props)
   }
-
-  componentWillReceiveProps(nextProps){
-    console.log(nextProps)
-    console.log(this.props)
-  }
-
 
   render() {
     return (
