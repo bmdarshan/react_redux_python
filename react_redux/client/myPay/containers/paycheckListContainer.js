@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import { removePaycheck } from "../actions/actions.js";
+import { fetchSavedPaychecks } from "../actions/actions.js";
 import PayCheckList from "../components/payCheckList.jsx";
 
 const mapStateToProps = state => {
@@ -8,6 +8,14 @@ const mapStateToProps = state => {
   };
 };
 
-const PayCheckListContainer = connect(mapStateToProps)(PayCheckList);
+const mapDispatchToProps = (dispatch) => {
+  return {
+    fetchSavedPaychecksFromService: (options) => {
+      dispatch(fetchSavedPaychecks(options));
+    }
+  };
+};
+
+const PayCheckListContainer = connect(mapStateToProps, mapDispatchToProps)(PayCheckList);
 
 export default PayCheckListContainer;

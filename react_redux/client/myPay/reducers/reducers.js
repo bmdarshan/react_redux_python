@@ -1,5 +1,5 @@
 import { combineReducers } from "redux";
-import { ADD_PAY_CHECK, REMOVE_PAY_CHECK } from '../constants.js';
+import { ADD_PAY_CHECK, REMOVE_PAY_CHECK,RECIEVE_SAVED_PAYCHECKS } from '../constants.js';
 
 
 function payCheckList(state = [], action) {
@@ -12,7 +12,10 @@ function payCheckList(state = [], action) {
           payCheckAmount:action.payCheckDetails.payCheckAmount
         }
       ]
-	} else {
+	} else if (action.type === RECIEVE_SAVED_PAYCHECKS) {
+    // update the store state
+  } 
+  else {
 		return state
 	}
 }

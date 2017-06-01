@@ -2,15 +2,13 @@ import React, { PropTypes } from "react";
 import { Provider } from "react-redux";
 import { Switch } from "react-router";
 import { BrowserRouter, Route } from "react-router-dom";
-import { createStore } from "redux";
 
-import myPayCheckApp from "./myPay/reducers/reducers.js";
+import configureStore from "./myPay/store/configureStore.js"
 import MyOrganizer from "./myOrganizer/components/myOrganizer.jsx";
 import MyPay from "./myPay/components/myPay.jsx";
 
-let store = createStore(myPayCheckApp);
+const store = configureStore()
 
-console.log(store.getState())
 const Root = () => (
   <Provider store={store}>
     <BrowserRouter>
