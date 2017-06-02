@@ -4,12 +4,16 @@ import PayCheck from "./payCheck.jsx";
 export default class PayCheckList extends React.Component {
   constructor(props) {
     super(props);
+    console.log(props)
   }
 
   componentDidMount() {
-    let options = {};
+    let options = {
+      url:'https://www.reddit.com/r/reactjs.json'
+    };
     this.props.fetchSavedPaychecksFromService(options);
   }
+
 
   render() {
     return (

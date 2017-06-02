@@ -1,4 +1,6 @@
-import { ADD_PAY_CHECK, REMOVE_PAY_CHECK,FETCH_SAVED_PAYCHECKS,REQUEST_SAVED_PAYCHECKS } from '../constants.js';
+import fetch from 'isomorphic-fetch'
+
+import { ADD_PAY_CHECK, REMOVE_PAY_CHECK,FETCH_SAVED_PAYCHECKS,REQUEST_SAVED_PAYCHECKS,RECIEVE_SAVED_PAYCHECKS } from '../constants.js';
 
 export function addPayCheck(payCheckDetails) {
   return { type: ADD_PAY_CHECK, payCheckDetails }
@@ -12,11 +14,11 @@ export function requestSavedPaychecks(options){
 	return {type: REQUEST_SAVED_PAYCHECKS, options}
 }
 
-export function recieveSavedPaychecks(options){
+export function recieveSavedPaychecks(options, json){
 	return {
     type: RECIEVE_SAVED_PAYCHECKS,
     options,
-    posts: json.data.children.map(child => child.data),
+    posts: json,
     receivedAt: Date.now()
   }
 }

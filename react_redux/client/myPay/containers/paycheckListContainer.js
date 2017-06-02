@@ -4,7 +4,7 @@ import PayCheckList from "../components/payCheckList.jsx";
 
 const mapStateToProps = state => {
   return {
-    payCheckList: state.payCheckList
+    payCheckList: state.payCheckInformation.payCheckList
   };
 };
 
