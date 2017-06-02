@@ -1,5 +1,5 @@
 import { combineReducers } from "redux";
-import { ADD_PAY_CHECK, REMOVE_PAY_CHECK, RECIEVE_SAVED_PAYCHECKS } from '../constants.js';
+import { ADD_PAY_CHECK, REMOVE_PAY_CHECK, RECIEVE_SAVED_PAYCHECKS, REQUEST_SAVED_PAYCHECKS } from '../constants.js';
 
 
 function payCheckInformation(state = {
@@ -24,16 +24,17 @@ function payCheckInformation(state = {
 }
 
 
-function posts(state = {
+function savedPayCheckInformation(state = {
     isFetching: false,
     payCheckList: []
 }, action) {
     switch (action.type) {
-        case REQUEST_POSTS:
+        case REQUEST_SAVED_PAYCHECKS:
             return Object.assign({}, state, {
                 isFetching: true
             })
         case RECIEVE_SAVED_PAYCHECKS:
+            console.log(action)
             return Object.assign({}, state, {
                 isFetching: false,
                 payCheckList: action.payCheckList,
@@ -45,7 +46,8 @@ function posts(state = {
 }
 
 const myPayCheckApp = combineReducers({
-    payCheckInformation
+    payCheckInformation,
+    savedPayCheckInformation
 });
 
 export default myPayCheckApp;
