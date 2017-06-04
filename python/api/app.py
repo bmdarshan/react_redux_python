@@ -1,22 +1,23 @@
-from flask import Flask
-from flask import jsonify
-from flask import request
-from pymongo import MongoClient
+from flask import Flask, Blueprint
+from flask_restful import Api, url_for
+from get_all_payChecks import GetAllPaychecks
 
 app = Flask(__name__)
+api_bp = Blueprint('api', __name__)
+api = Api(api_bp)
 
-client = MongoClient()
-db = client.myPay
+api.add_resource(GetAllPaychecks, '/payChecks')
+app.register_blueprint(api_bp)
 
 
-@app.route('/payChecks', methods=['GET'])
-def get_all_payChecks():
-  payChecks = db.payStub.find({});
-  output = []
-  for s in payChecks:
-    print s['payCheckNumber']
-    output.append({'payCheckNumber' : s['payCheckNumber'], 'payDate' : s['payDate']})
-  return jsonify({'result' : output})
+# @app.route('/payChecks', methods=['GET'])
+# def get_all_payChecks():
+#   payChecks = db.payStub.find({});
+#   output = []
+#   for s in payChecks:
+#     print s['payCheckNumber']
+#     output.append({'payCheckNumber' : s['payCheckNumber'], 'payDate' : s['payDate']})
+#   return jsonify({'result' : output})
 
 # @app.route('/star/', methods=['GET'])
 # def get_one_star(name):

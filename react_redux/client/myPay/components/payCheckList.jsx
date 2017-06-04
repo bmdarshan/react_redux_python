@@ -4,16 +4,26 @@ import PayCheck from "./payCheck.jsx";
 export default class PayCheckList extends React.Component {
   constructor(props) {
     super(props);
-    console.log(props)
   }
 
   componentDidMount() {
+    let header = new Headers({
+      "Access-Control-Allow-Origin": "*",
+      "Content-Type": "multipart/form-data"
+    });
+    let defaultOptions = {
+      url: "http://localhost:5000/payChecks",
+      method: "GET",
+      mode: "no-cors",
+      headers: header,
+      body: null
+    };
     let options = {
-      url:'https://www.reddit.com/r/reactjs.json'
+      url: "http://localhost:5000/payChecks",
+      defaultOptions: defaultOptions
     };
     this.props.fetchSavedPaychecksFromService(options);
   }
-
 
   render() {
     return (
